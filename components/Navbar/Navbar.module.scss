@@ -1,0 +1,91 @@
+@import '@styles/variables.scss';
+
+.header {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+  background: $primary-white;
+}
+
+.container {
+  width: min(100% - 3rem, 1120px);
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.3);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.55rem;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.brand img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2.6vw, 2rem);
+}
+
+.menu a {
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', serif;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu a:hover,
+.active {
+  color: $primary-gold !important;
+}
+
+@media (max-width: 620px) {
+  .container {
+    width: calc(100% - 2rem);
+    min-height: 68px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0;
+  }
+
+  .brand {
+    gap: 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.35rem;
+  }
+
+  .menu a {
+    font-size: 0.7rem;
+  }
+
+}

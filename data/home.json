@@ -1,0 +1,37 @@
+{
+  "defaultText": {
+    "h1": "ho-a-chiao",
+    "h3": "Frontend Developer & Cultural Researcher",
+    "h5": "Designing thoughtful interfaces from Taipei"
+  },
+  "photoOpenedText": {
+    "h1": "Bridging Code and Culture.",
+    "h3": "Exploring the Layered Narratives",
+    "h5": "From the archives of post-colonial history to the logic of modern interfaces. My journey is a synthesis of discipline in the ring, curiosity in the field, and precision in the code."
+  },
+  "developer": {
+    "h1": "Developer",
+    "h3": "Precise Implementation",
+    "h5": "My foundation as a Frontend Engineer. Regardless of how the environment shifts, my commitment to clean code and seamless user experiences remains the constant thread in my work."
+  },
+  "muayThai": {
+    "h1": "MuayThai",
+    "h3": "Discipline in the Ring",
+    "h5": "Muay Thai has taught me that resilience is key—both in the gym and while debugging complex React applications. It’s about staying focused under pressure."
+  },
+  "heritage": {
+    "h1": "Heritage",
+    "h3": "Fragments of Heritage",
+    "h5": "Obsessed with the remnants of the past. I see technology as a vital tool for preserving and reinterpreting cultural narratives for the digital age."
+  },
+  "architecture": {
+    "h1": "Architecture",
+    "h3": "Decolonizing the Interface",
+    "h5": "Analyzing colonial architecture informs my critical perspective on how digital products can shape, or reshape, global and local identities."
+  },
+  "devotion": {
+    "h1": "Devotion",
+    "h3": "Faith and History",
+    "h5": "As a historical researcher and a believer in Buddhist and Taoist traditions, I stand at the intersection of spiritual heritage and academic inquiry, seeking stories etched in sacred spaces."
+  }
+}

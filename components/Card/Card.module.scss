@@ -1,0 +1,236 @@
+@import '@styles/variables.scss';
+
+.card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(7, 59, 76, 0.12);
+  border-radius: 0.35rem;
+  background: $primary-white;
+  box-shadow: 0 0.4rem 1.2rem rgba(7, 59, 76, 0.07);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.8rem 1.6rem rgba(7, 59, 76, 0.14);
+}
+
+.imageLink {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.8;
+  flex: 0 0 auto;
+  background-color: rgba(84, 191, 192, 0.24);
+  background-position: center;
+  background-size: cover;
+}
+
+.cardContent {
+  min-height: 220px;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1.15rem 1.25rem 1rem;
+}
+
+.category {
+  margin-bottom: 0.55rem;
+  color: $primary-gold;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.headerRow {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cardTitle {
+  margin: 0;
+  color: $primary-color;
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.dateText {
+  color: rgba(7, 59, 76, 0.48);
+  font-size: 0.75rem;
+}
+
+.cardText {
+  display: -webkit-box;
+  overflow: hidden;
+  margin-top: 0.65rem;
+  color: rgba(7, 59, 76, 0.74);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.cardText p {
+  margin: 0;
+}
+
+.cardText a {
+  color: $primary-gold;
+  overflow-wrap: anywhere;
+}
+
+.linkBlock {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 1rem;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.linkBlock a {
+  color: $primary-color;
+  text-decoration: none;
+}
+
+.linkBlock a:hover {
+  color: $primary-gold;
+}
+
+.linkSeparator {
+  margin: 0 0.4rem;
+  color: $primary-gold;
+}
+
+.editorial {
+  position: relative;
+  border: 0;
+  border-radius: 1rem 0.3rem 1rem 0.3rem;
+  background:
+    linear-gradient(140deg, rgba(84, 191, 192, 0.09), transparent 55%),
+    $primary-white;
+}
+
+.stories {
+  display: grid;
+  grid-template-columns: minmax(150px, 26%) minmax(0, 1fr);
+  align-items: stretch;
+  border-radius: 0.45rem;
+}
+
+.stories .imageLink {
+  width: calc(100% - 0.75rem);
+  aspect-ratio: 1.45;
+  align-self: center;
+  margin: 0.65rem 0 0.65rem 0.65rem;
+  border-radius: 0.25rem;
+}
+
+.stories .cardContent {
+  min-height: 170px;
+  padding: 1rem 1.15rem;
+}
+
+.stories .cardTitle {
+  font-size: 1.1rem;
+}
+
+.storiesNoImage {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.editorial:nth-child(3n + 2) {
+  border-radius: 0.3rem 1rem 0.3rem 1rem;
+}
+
+.editorial .imageLink {
+  aspect-ratio: 1.5;
+  border-bottom: 4px solid $primary-color-light;
+}
+
+.editorial .cardContent {
+  min-height: 235px;
+  padding: 1.25rem 1.35rem 1.1rem;
+}
+
+.editorial .category {
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+}
+
+.categoryDefault {
+  color: $primary-color;
+  background: rgba(84, 191, 192, 0.2);
+}
+
+.reading {
+  color: #347a54;
+  background: rgba(94, 173, 119, 0.18);
+}
+
+.dissertation {
+  color: #bd553e;
+  background: rgba(240, 90, 62, 0.13);
+}
+
+.editorial .reading {
+  color: #347a54;
+  background: rgba(94, 173, 119, 0.18);
+}
+
+.editorial .dissertation {
+  color: #bd553e;
+  background: rgba(240, 90, 62, 0.13);
+}
+
+@media (max-width: 760px) {
+  .editorial .imageLink {
+    aspect-ratio: 1.8;
+  }
+
+  .stories {
+    grid-template-columns: minmax(120px, 32%) minmax(0, 1fr);
+  }
+
+  .stories .imageLink {
+    aspect-ratio: 1;
+    margin: 0.55rem 0 0.55rem 0.55rem;
+  }
+
+  .stories .cardContent {
+    min-height: 150px;
+    padding: 0.85rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .stories {
+    grid-template-columns: minmax(100px, 34%) minmax(0, 1fr);
+  }
+
+  .stories .cardContent {
+    min-height: 130px;
+    padding: 0.7rem;
+  }
+
+  .stories .cardTitle {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .cardContent,
+  .editorial .cardContent {
+    min-height: 190px;
+    padding: 1rem;
+  }
+}

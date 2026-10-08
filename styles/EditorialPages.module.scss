@@ -1,0 +1,206 @@
+@import '@styles/variables.scss';
+
+.page {
+  width: min(100% - 3rem, 1120px);
+  min-height: 70vh;
+  margin: 0 auto;
+  padding: 7rem 0 3rem;
+}
+
+.aboutIntro {
+  display: grid;
+  grid-template-columns: 1fr minmax(220px, 0.65fr);
+  align-items: start;
+  gap: clamp(2rem, 7vw, 6rem);
+  padding: 2rem 0 3rem;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.2);
+}
+
+.aboutCopy {
+  max-width: 46rem;
+}
+
+.eyebrow {
+  color: $primary-gold;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.aboutIntro h1,
+.topicsIntro h1 {
+  margin: 0.75rem 0 1.25rem;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+}
+
+.aboutIntro h2 {
+  margin: 0 0 1.25rem;
+  color: $primary-color;
+  font-size: clamp(1.15rem, 2.5vw, 1.65rem);
+  line-height: 1.5;
+}
+
+.aboutIntro p,
+.aboutSection p,
+.topicsIntro p {
+  max-width: 46rem;
+  margin: 0 0 1rem;
+  color: rgba(7, 59, 76, 0.75);
+  line-height: 1.9;
+}
+
+.aboutSection {
+  max-width: 52rem;
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.16);
+}
+
+.aboutSection h2 {
+  margin: 0 0 1rem;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  font-weight: 800;
+}
+
+.aboutDetails {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 7vw, 6rem);
+}
+
+.aboutDetails .aboutSection {
+  width: 100%;
+}
+
+.backgroundList {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: rgba(7, 59, 76, 0.75);
+  line-height: 1.8;
+}
+
+.backgroundList li::marker {
+  color: $primary-gold;
+}
+
+.emailLink {
+  display: inline-block;
+  color: $primary-gold;
+  font-weight: 700;
+  text-decoration-color: rgba(240, 90, 62, 0.4);
+  text-underline-offset: 0.2rem;
+}
+
+.emailLink:hover {
+  color: $primary-color;
+}
+
+.aboutImage {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: cover;
+  background: $primary-color-light;
+  box-shadow: 0 0.75rem 2rem rgba(7, 59, 76, 0.14);
+}
+
+.topicsIntro {
+  padding: 2rem 0 2.5rem;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.2);
+}
+
+.topicGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  padding: 2rem 0 3rem;
+}
+
+.topicCard {
+  position: relative;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1.5rem;
+  border: 1px solid rgba(7, 59, 76, 0.14);
+  background: linear-gradient(145deg, rgba(84, 191, 192, 0.15), rgba(255, 241, 208, 0.65));
+  color: $primary-color;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.topicCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0.75rem 1.5rem rgba(7, 59, 76, 0.12);
+  color: $primary-color;
+}
+
+.topicNumber {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.5rem;
+  color: $primary-gold;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+}
+
+.topicCard h2 {
+  margin: 0 0 0.3rem;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.topicEnglish {
+  color: rgba(7, 59, 76, 0.62);
+  font-size: 0.85rem;
+}
+
+.topicArrow {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  color: $primary-gold;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 700px) {
+  .page {
+    width: min(100% - 2rem, 560px);
+    padding-top: 7rem;
+  }
+
+  .aboutIntro {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding-top: 1rem;
+  }
+
+  .aboutImage {
+    max-height: 280px;
+  }
+
+  .aboutDetails {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .topicGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .topicCard {
+    min-height: 150px;
+  }
+}

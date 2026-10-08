@@ -1,0 +1,23 @@
+.codeCard {
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+}
+
+.codeHeader {
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  color: #4b5563;
+  background: #f8f9fa;
+}
+
+.codeBlock {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  background: #f6f8fa;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}

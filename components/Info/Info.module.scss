@@ -1,0 +1,151 @@
+@import '@styles/variables.scss';
+.container {
+  padding: 1rem;
+  padding-bottom: 3rem;
+  h1 {
+    color: $primary-color;
+  }
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: $primary-gold;
+  border-radius: 999px;
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  width: 100%;
+}
+
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 1rem;
+  width: 16px;
+  height: 16px;
+  background: $primary-gold;
+  border-radius: 50%;
+  border: 3px solid $primary-white;
+  box-shadow: 0 0 0 2px $primary-gold;
+  transform: translateX(-50%);
+}
+
+.timelineCard {
+  border: 1px solid $primary-gold;
+  width: 45%;
+}
+
+.timelineCard h3 {
+  color: $primary-color;
+}
+
+.timelineCard p {
+  color: #111;
+  margin-bottom: 0.5rem;
+}
+
+.timelineItem:nth-child(odd) {
+  justify-content: flex-end;
+  padding-right: 2.5rem;
+}
+
+.timelineItem:nth-child(even) {
+  justify-content: flex-start;
+  padding-left: 2.5rem;
+}
+
+.contactContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  .section {
+    margin-top: 3rem;
+    padding: 1rem;
+    border: 1px solid $primary-gold;
+    width: 45%;
+  }
+
+  .sectionTitle {
+    color: $primary-color;
+    margin-bottom: 1rem;
+  }
+
+  .skillGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .skillTag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    background: rgba(240, 90, 62, 0.15);
+    color: $primary-color;
+    border: 1px solid rgba(240, 90, 62, 0.45);
+    font-size: 0.9rem;
+    letter-spacing: 0.2px;
+  }
+
+  .contactCard {
+    margin-top: 2rem;
+    width: 45%;
+    border: 1px solid $primary-gold;
+  }
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 12px;
+    transform: none;
+  }
+
+  .timelineItem {
+    padding-left: 2.5rem;
+  }
+
+  .timelineItem::before {
+    left: 12px;
+    transform: none;
+  }
+
+  .timelineItem:nth-child(odd),
+  .timelineItem:nth-child(even) {
+    justify-content: flex-start;
+    padding-left: 2.5rem;
+    padding-right: 0;
+  }
+
+  .timelineCard {
+    width: 100%;
+  }
+
+  .contactContainer {
+    flex-direction: column;
+    .section {
+      width: 100%;
+    }
+    .contactCard {
+      width: 100%;
+    }
+  }
+}

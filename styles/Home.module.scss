@@ -1,0 +1,600 @@
+@import '@styles/variables.scss';
+
+.page {
+  width: min(100% - 3rem, 1120px);
+  margin: 0 auto;
+  padding-top: 5rem;
+}
+
+.hero {
+  min-height: 440px;
+  display: grid;
+  grid-template-columns: 0.86fr 1.14fr;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 1.5rem 0 2.75rem;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.35);
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 1;
+  padding: 0.5rem 0 1rem 0.25rem;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 1.25rem;
+  color: $primary-gold;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.heroTitle {
+  margin: 0;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: clamp(3.4rem, 6.6vw, 5.3rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 1.14;
+  white-space: nowrap;
+}
+
+.brushStroke {
+  display: block;
+  height: 0.35rem;
+  border-radius: 100%;
+  background: $primary-gold;
+  transform: rotate(-3deg);
+}
+
+.heroBrush {
+  width: min(78%, 18rem);
+  margin: 0.45rem 0 1.65rem -0.25rem;
+}
+
+.heroSubtitle {
+  margin-bottom: 0.75rem;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.heroDescription {
+  max-width: 24rem;
+  margin: 0;
+  color: rgba(7, 59, 76, 0.76);
+  font-size: 0.95rem;
+  line-height: 1.8;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.65rem;
+}
+
+.primaryAction,
+.featureAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.45rem;
+  background: $primary-color;
+  color: $primary-white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.primaryAction:hover,
+.featureAction:hover {
+  background: $primary-color-light;
+  color: $primary-color;
+}
+
+.secondaryAction {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.45);
+  color: $primary-color;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.photoCollage {
+  position: relative;
+  min-height: 340px;
+  margin-right: 0.4rem;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 0 43%, rgba(7, 59, 76, 0.12) 43.3% 43.6%, transparent 44%),
+    radial-gradient(ellipse at 50% 50%, transparent 0 60%, rgba(7, 59, 76, 0.1) 60.3% 60.6%, transparent 61%);
+}
+
+.photoCard {
+  position: absolute;
+  padding: 0.45rem;
+  background: $primary-white;
+  box-shadow: 0 0.55rem 1.5rem rgba(7, 59, 76, 0.14);
+}
+
+.photoCard img {
+  object-fit: cover;
+}
+
+.mainPhoto {
+  top: 2rem;
+  left: 2%;
+  width: 63%;
+  height: 276px;
+  transform: rotate(-5deg);
+}
+
+.sidePhoto {
+  top: 1.4rem;
+  right: 1%;
+  width: 39%;
+  height: 184px;
+  transform: rotate(4deg);
+}
+
+.bottomPhoto {
+  right: 1%;
+  bottom: 0.5rem;
+  width: 43%;
+  height: 142px;
+  transform: rotate(3deg);
+}
+
+.postmark {
+  position: absolute;
+  top: 0.15rem;
+  left: -2%;
+  width: 6.25rem;
+  aspect-ratio: 1;
+  border: 1px dashed rgba(7, 59, 76, 0.3);
+  border-radius: 50%;
+  transform: rotate(-15deg);
+}
+
+.locationPin {
+  position: absolute;
+  right: 37%;
+  bottom: 0.3rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border: 0.25rem solid $primary-gold;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+}
+
+.stories {
+  padding: 1.5rem 0 2.25rem;
+}
+
+.sectionHeading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.1rem;
+}
+
+.headingPlaceholders {
+  position: relative;
+  padding-bottom: 0.55rem;
+}
+
+.sectionTitle {
+  margin: 0;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.headingBrush {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 4rem;
+  height: 0.2rem;
+}
+
+.viewAll {
+  color: $primary-color;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.viewAll:hover,
+.secondaryAction:hover,
+.storyTitle a:hover {
+  color: $primary-gold;
+}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.storyCard {
+  min-width: 0;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.17);
+}
+
+.storyImage {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1.85;
+  margin-bottom: 0.75rem;
+  background:
+    linear-gradient(155deg, transparent 46%, rgba(7, 59, 76, 0.08) 46.5% 47%, transparent 47.5%),
+    linear-gradient(30deg, transparent 50%, rgba(240, 90, 62, 0.1) 50.5% 51%, transparent 51.5%),
+    rgba(84, 191, 192, 0.33);
+  background-position: center;
+  background-size: cover;
+}
+
+.storyImage:hover {
+  opacity: 0.88;
+}
+
+.storyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.storyCategory {
+  margin-bottom: 0.5rem;
+  color: $primary-gold;
+  font-size: 0.75rem;
+}
+
+.storyTitle {
+  margin-bottom: 0.55rem;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.storyTitle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.storySummary {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0 0 0.75rem;
+  color: rgba(7, 59, 76, 0.72);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.storySummary a {
+  color: $primary-gold;
+  overflow-wrap: anywhere;
+}
+
+.storyDate {
+  margin-top: auto;
+  color: rgba(7, 59, 76, 0.48);
+  font-size: 0.75rem;
+}
+
+.storyMessage {
+  margin: 1.5rem 0;
+  color: rgba(7, 59, 76, 0.72);
+  font-size: 0.95rem;
+}
+
+.feature {
+  min-height: 260px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  background: $primary-color;
+}
+
+.featureVisual {
+  position: relative;
+  min-height: 260px;
+}
+
+.featureImage {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  background:
+    radial-gradient(ellipse at 50% 45%, transparent 0 22%, rgba(255, 241, 208, 0.23) 22.3% 22.8%, transparent 23.1%),
+    linear-gradient(145deg, transparent 48%, rgba(240, 90, 62, 0.25) 48.5% 49%, transparent 49.5%),
+    linear-gradient(25deg, transparent 56%, rgba(255, 241, 208, 0.24) 56.5% 57%, transparent 57.5%),
+    $primary-color-light;
+  background-position: center;
+  background-size: cover;
+}
+
+.featureImageSlide {
+  position: absolute;
+  inset: 0;
+  animation: featureSlideIn 520ms ease-out both;
+}
+
+.featureImage::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(7, 59, 76, 0.18), transparent 65%);
+  content: '';
+}
+
+.featureImage:hover {
+  opacity: 0.9;
+}
+
+.featureControls {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.featureControls button {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 241, 208, 0.7);
+  border-radius: 50%;
+  background: rgba(7, 59, 76, 0.78);
+  color: $primary-white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+.featureControls button:hover {
+  transform: scale(1.06);
+  background: $primary-gold;
+}
+
+.featureControls button:focus-visible {
+  outline: 2px solid $primary-white;
+  outline-offset: 3px;
+}
+
+.featureCopy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 100% 100%, transparent 0 35%, rgba(255, 241, 208, 0.1) 35.3% 35.6%, transparent 36%),
+    $primary-color;
+}
+
+.featureCopy .eyebrow {
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  margin-bottom: 1rem;
+  color: $primary-white;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.4;
+}
+
+.featureDescription {
+  margin: 0 0 1.5rem;
+  color: rgba(255, 241, 208, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.featureArticle {
+  width: 100%;
+  margin: 0 0 1.2rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid $primary-color-light;
+}
+
+.featureArticleSlide {
+  animation: featureSlideIn 420ms ease-out both;
+}
+
+@keyframes featureSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.featureArticleCategory {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: $primary-color-light;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.featureArticleTitle {
+  margin: 0 0 0.35rem;
+  color: $primary-white;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.featureArticleSummary {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: rgba(255, 241, 208, 0.78);
+  font-size: 0.8rem;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.featureError {
+  margin: 0 0 1rem;
+  color: $primary-white;
+  font-size: 0.8rem;
+}
+
+.featureAction {
+  min-height: 2.5rem;
+  background: $primary-white;
+  color: $primary-color;
+}
+
+.about {
+  padding: 1.25rem 0;
+}
+
+@media (max-width: 760px) {
+  .featureImageSlide,
+  .featureArticleSlide {
+    animation: none;
+  }
+
+  .featureControls {
+    display: none;
+  }
+
+  .page {
+    width: min(100% - 2rem, 560px);
+    padding-top: 6rem;
+  }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    padding: 2rem 0 1.5rem;
+  }
+
+  .heroCopy {
+    padding-left: 0;
+  }
+
+  .heroTitle {
+    font-size: clamp(3rem, 12vw, 4rem);
+  }
+
+  .heroBrush {
+    margin-bottom: 1.25rem;
+  }
+
+  .heroActions {
+    margin-top: 1.25rem;
+  }
+
+  .photoCollage {
+    min-height: 280px;
+    margin: 0 0.25rem;
+  }
+
+  .mainPhoto {
+    top: 1.6rem;
+    height: 220px;
+  }
+
+  .sidePhoto {
+    top: 0.7rem;
+    height: 145px;
+  }
+
+  .bottomPhoto {
+    height: 112px;
+  }
+
+  .postmark {
+    top: 0;
+    width: 4.5rem;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .storyCard {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    align-content: center;
+    column-gap: 0.9rem;
+  }
+
+  .storyImage {
+    grid-column: 1;
+    grid-row: 1;
+    aspect-ratio: 1.15;
+    margin-bottom: 0;
+  }
+
+  .storyContent {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .feature {
+    grid-template-columns: 1fr;
+  }
+
+  .featureImage {
+    min-height: 185px;
+    max-height: 250px;
+  }
+
+  .featureCopy {
+    min-height: 220px;
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .heroTitle {
+    font-size: 2.8rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+}
