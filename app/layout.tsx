@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'ho-a-chiao',
-  description: 'A Frontend Developer based in Taipei',
+  title: '何阿樵 Ho A Chiao',
+  description:
+    '從臺灣到東南亞，追查信仰、語言、飲食與遷徙留下的文化線索。何阿樵的故事文章、旅行觀察與攝影筆記。',
   icons: {
     icon: '/images/a-chiao-logo.png',
   },
