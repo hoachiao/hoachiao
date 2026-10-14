@@ -494,8 +494,10 @@
     animation: none;
   }
 
-  .featureControls {
-    display: none;
+  .featureControls button {
+    width: 3rem;
+    height: 3rem;
+    touch-action: manipulation;
   }
 
   .page {

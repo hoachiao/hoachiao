@@ -6,7 +6,8 @@ interface AutoLinkTextProps {
   links?: BlogTextLink[];
 }
 
-const urlPattern = /https?:\/\/[^\s<>"'`]+/gi;
+const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/gi;
+const urlPattern = /https?:\/\/[^\s<>"'`()\[\]／]+/gi;
 const trailingPunctuation = /[.,!?;:，。！？；：、）】」』》]+$/;
 
 function isSafeHttpUrl(value: string) {
@@ -19,6 +20,24 @@ function isSafeHttpUrl(value: string) {
 }
 
 export default function AutoLinkText({ text, links = [] }: AutoLinkTextProps) {
+  const markdownMatches = Array.from(text.matchAll(markdownLinkPattern)).flatMap(
+    (match) => {
+      const label = match[1];
+      const url = match[2];
+      const start = match.index ?? 0;
+      return isSafeHttpUrl(url)
+        ? [
+            {
+              start,
+              end: start + match[0].length,
+              label,
+              url,
+            },
+          ]
+        : [];
+    }
+  );
+
   let linkCursor = 0;
   const linkMatches = links.flatMap((link) => {
     if (!link.text || !isSafeHttpUrl(link.url)) return [];
@@ -43,7 +62,7 @@ export default function AutoLinkText({ text, links = [] }: AutoLinkTextProps) {
       ? [{ start, end: start + url.length, label: url, url }]
       : [];
   });
-  const matches = [...linkMatches, ...urlMatches]
+  const matches = [...markdownMatches, ...linkMatches, ...urlMatches]
     .sort((left, right) => left.start - right.start || right.end - left.end)
     .filter((match, index, all) =>
       !all.slice(0, index).some(
