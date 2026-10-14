@@ -2,6 +2,16 @@ import Footer from '@components/Footer/Footer';
 import Navbar from '@components/Navbar/Navbar';
 import Image from 'next/image';
 import styles from '@styles/EditorialPages.module.scss';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '關於阿樵｜何孟樵',
+  description:
+    '認識何阿樵：來自雲林莿桐，讀歷史也寫程式，關注臺灣與東南亞的信仰、語言、飲食和遷徙故事。',
+  alternates: {
+    canonical: '/about',
+  },
+};
 
 export default function AboutPage() {
   return (

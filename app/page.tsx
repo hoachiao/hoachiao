@@ -5,6 +5,16 @@ import Link from 'next/link';
 import HomeStories from '@components/Home/HomeStories';
 import HomeTopicsFeature from '@components/Home/HomeTopicsFeature';
 import styles from '../styles/Home.module.scss';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '阿樵四界看｜臺灣與東南亞的歷史文化故事',
+  description:
+    '我是何阿樵，讀歷史，也寫程式。從臺灣到東南亞，記錄街區、信仰、語言與人的故事，追查日常裡的歷史線索。',
+  alternates: {
+    canonical: '/',
+  },
+};
 
 export default function Home() {
   return (
