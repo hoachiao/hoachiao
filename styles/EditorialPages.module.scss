@@ -66,6 +66,81 @@
   font-weight: 800;
 }
 
+.mediaSection {
+  padding: 2.25rem 0;
+  border-bottom: 1px solid rgba(7, 59, 76, 0.16);
+}
+
+.mediaSection h2 {
+  margin: 0 0 0.5rem;
+  color: $primary-color;
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  font-weight: 800;
+}
+
+.mediaSection > p {
+  margin: 0 0 1.25rem;
+  color: rgba(7, 59, 76, 0.75);
+  line-height: 1.9;
+}
+
+.mediaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.mediaCard {
+  position: relative;
+  display: flex;
+  min-height: 190px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.8rem;
+  padding: 1.25rem 2.75rem 1.25rem 1.25rem;
+  border: 1px solid rgba(7, 59, 76, 0.14);
+  background: linear-gradient(145deg, rgba(84, 191, 192, 0.1), rgba(255, 241, 208, 0.45));
+  color: $primary-color;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.mediaCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 1.5rem rgba(7, 59, 76, 0.12);
+  color: $primary-color;
+}
+
+.mediaPublication {
+  color: $primary-gold;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.mediaDate {
+  color: rgba(7, 59, 76, 0.62);
+  font-size: 0.8rem;
+}
+
+.mediaTitle {
+  font-family: Georgia, 'Noto Serif TC', 'Noto Serif CJK TC', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
+.mediaArrow {
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.1rem;
+  color: $primary-gold;
+  font-size: 1.3rem;
+}
+
 .aboutDetails {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -193,6 +268,15 @@
   .aboutDetails {
     grid-template-columns: 1fr;
     gap: 0;
+  }
+
+  .mediaGrid {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+
+  .mediaCard {
+    min-height: 0;
   }
 
   .topicGrid {
