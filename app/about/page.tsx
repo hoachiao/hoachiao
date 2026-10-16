@@ -13,6 +13,25 @@ export const metadata: Metadata = {
   },
 };
 
+const mediaArticles = [
+  {
+    title:
+      '臺灣人為什麼要關心「以巴衝突」？——我在倫敦「停止殺戮」聲援活動現場看到的事',
+    url: 'https://crossing.cw.com.tw/article/9730',
+    date: '2018-04-09',
+  },
+  {
+    title: '同為白人眼裡的「有色人種」，你有發現自己正在「歧視黑人」嗎？',
+    url: 'https://crossing.cw.com.tw/article/9459',
+    date: '2018-02-21',
+  },
+  {
+    title: '誰有資格說出「都過去了，忘記吧」？──慰安婦不只是歷史議題，聽聽外國人怎麼說',
+    url: 'https://crossing.cw.com.tw/article/9355',
+    date: '2018-01-26',
+  },
+];
+
 export default function AboutPage() {
   return (
     <>
@@ -47,6 +66,38 @@ export default function AboutPage() {
           <p>
             目前正在整理檳城的城市與文化故事，也透過「阿樵採故事」分享短篇內容。這個網站收錄完整文章、主題專欄與參考資料，讓有興趣的讀者可以繼續讀下去。
           </p>
+        </section>
+        <section className={styles.mediaSection} aria-labelledby='media-title'>
+          <h2 id='media-title'>媒體刊登</h2>
+          <p>刊登於《換日線》的文章。</p>
+          <div className={styles.mediaGrid}>
+            {mediaArticles.map((article) => (
+              <a
+                className={styles.mediaCard}
+                href={article.url}
+                key={article.url}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <span className={styles.mediaPublication}>換日線</span>
+                <time className={styles.mediaDate} dateTime={article.date}>
+                  {new Date(`${article.date}T00:00:00`).toLocaleDateString(
+                    'zh-TW',
+                    {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                      timeZone: 'UTC',
+                    }
+                  )}
+                </time>
+                <span className={styles.mediaTitle}>{article.title}</span>
+                <span className={styles.mediaArrow} aria-hidden='true'>
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
         </section>
         <section className={styles.aboutDetails}>
           <div className={styles.aboutSection}>
