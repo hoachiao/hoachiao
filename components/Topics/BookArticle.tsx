@@ -57,14 +57,14 @@ export default function BookArticle({ blog, lang }: { blog: BlogsType; lang: 'zh
       <nav className={styles.toolbar} aria-label='書籍導覽'><Link href={catalog}>← 回到目錄</Link><span>{topic}</span><Link href={`/topics?lang=${lang}`}>主題書架 ↗</Link></nav>
       <div ref={anchor} tabIndex={-1} className={styles.readingAnchor}>
         <article className={styles.spread} aria-label={`${blog.title}書頁`}>
-          <header className={styles.leftPage}>
+          <header className={styles.leftPage} tabIndex={0} aria-label='章節標題與作者資訊'>
             <p className={styles.kicker}>A-CHIAO LIBRARY / {chapter >= 0 ? `CHAPTER ${String(chapter + 1).padStart(2, '0')}` : 'READING'}</p>
             <div className={styles.titleBlock}><span className={styles.topic}>{topic}</span><h1>{blog.title}</h1><p className={styles.byline}>何阿樵{blog.date ? ` · ${blog.date.slice(0, 10)}` : ''}</p></div>
             <div className={styles.leftFoot}><span>閱讀・田野・研究</span><span>{chapter >= 0 ? `${chapter + 1} / ${book?.articles.length} 章` : '主題專欄'}</span></div>
           </header>
           <section className={styles.rightPage} aria-label='文章內容'>
             <div className={styles.runningHead}><span>{isPdf ? 'PDF READING' : 'READING NOTES'}</span><span>{String(current + 1).padStart(2, '0')}</span></div>
-            <div className={styles.prose} key={`${id}:${lang}:${current}`}>
+            <div className={styles.prose} tabIndex={0} role='region' aria-label='書頁正文，內容較長時可在此捲動' key={`${id}:${lang}:${current}`}>
               {isPdf ? <><p><a href={`${blog.pdfUrl}#page=${blog.startPage || 1}`} target='_blank' rel='noopener noreferrer'>另開 PDF 閱讀 ↗</a></p><iframe title={`${blog.title} PDF`} src={`${blog.pdfUrl}#page=${blog.startPage || 1}`} /></> : content.length ? content.map((block, index) => <Block key={index} block={block} />) : <p>這篇文章目前尚無可顯示的正文。</p>}
               {current + 1 === count && !!blog.reference?.length && <aside className={styles.references}><h2>參考資料</h2><ol>{blog.reference.map((reference) => <li key={reference.id}><a href={reference.link} target='_blank' rel='noopener noreferrer'>{reference.title}</a></li>)}</ol></aside>}
             </div>
