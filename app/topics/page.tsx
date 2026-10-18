@@ -1,4 +1,4 @@
-import BlogsClient from '../blogs/BlogsClient';
+import TopicBooks from '@components/Topics/TopicBooks';
 import type { Metadata } from 'next';
 
 export const dynamic = 'force-dynamic';
@@ -13,5 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function TopicsPage() {
-  return <BlogsClient mode='topics' />;
+  return <TopicBooks />;
 }
