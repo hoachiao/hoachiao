@@ -11,7 +11,8 @@ import useSWR, { useSWRConfig } from 'swr';
 import NotFound from '../../not-found';
 import CodeBlog from '@components/BlogDetail/CodeBlog';
 import ReadingBlog from '@components/BlogDetail/ReadingBlog';
-import { STORY_CATEGORY } from '@lib/blogCategories';
+import BookArticle from '@components/Topics/BookArticle';
+import { EXCLUDED_TOPIC_CATEGORIES, STORY_CATEGORY } from '@lib/blogCategories';
 
 export default function BlogPage() {
   const params = useParams();
@@ -39,7 +40,7 @@ export default function BlogPage() {
   const key = lang ? `/api/blogs/${id}?lang=${lang}` : null;
   const fallbackData = key ? cache.get(key) : undefined;
   const { data, error, isLoading, mutate } = useSWR(key, apiFetcher, {
-    keepPreviousData: true,
+    keepPreviousData: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
     fallbackData,
@@ -95,6 +96,10 @@ export default function BlogPage() {
   )
     ? 'blogs'
     : 'topics';
+
+  if (navbarPath === 'topics' && !isCodeBlog && blog.tags?.length && !blog.tags.some((tag) => EXCLUDED_TOPIC_CATEGORIES.some((excluded) => excluded.toLowerCase() === tag.toLowerCase()))) {
+    return <BookArticle blog={blog} lang={currentLang} />;
+  }
 
   return (
     <div>

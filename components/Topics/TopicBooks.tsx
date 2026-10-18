@@ -9,6 +9,7 @@ import Footer from '@components/Footer/Footer';
 import AutoLinkText from '@components/AutoLinkText/AutoLinkText';
 import { fetchTopicBooks, TopicBook } from '@lib/topicBooks';
 import styles from './TopicBooks.module.scss';
+import { bookArticleHref } from '@lib/bookPages';
 
 const number = (value: number) => String(value).padStart(2, '0');
 const topicHref = (lang: string, tag?: string) => `/topics?${new URLSearchParams({ lang, ...(tag ? { tag } : {}) })}`;
@@ -29,7 +30,8 @@ function Cover({ book, index, large = false }: { book: TopicBook; index: number;
 }
 
 function BookReader({ book, index, lang }: { book: TopicBook; index: number; lang: string }) {
-  const [opened, setOpened] = useState(false);
+  const searchParams = useSearchParams();
+  const [opened, setOpened] = useState(searchParams.get('open') === '1');
   const [page, setPage] = useState(0);
   const heading = useRef<HTMLHeadingElement>(null);
   const openButton = useRef<HTMLButtonElement>(null);
@@ -61,7 +63,7 @@ function BookReader({ book, index, lang }: { book: TopicBook; index: number; lan
           <ol className={styles.toc} start={page * pageSize + 1}>
             {chapters.map((article, position) => (
               <li key={String(article._id ?? article.id)}>
-                <Link href={`/blogs/${encodeURIComponent(String(article._id ?? article.id))}?lang=${lang}`}>
+                <Link href={bookArticleHref(String(article._id ?? article.id), lang, book.title)}>
                   <span className={styles.chapterNumber}>{number(page * pageSize + position + 1)}</span>
                   <span><strong>{article.title}</strong>{article.date && <small>{article.date.slice(0, 10)}</small>}</span>
                   <span aria-hidden='true'>↗</span>
