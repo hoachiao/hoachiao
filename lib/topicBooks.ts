@@ -22,7 +22,12 @@ export function groupTopicBooks(articles: BlogsType[]): TopicBook[] {
       books.set(key, book);
     }
   }
-  return Array.from(books.values()).sort((a, b) => a.title.localeCompare(b.title));
+  const isDissertation = (title: string) =>
+    ['dissertation', 'disseration'].includes(title.toLowerCase());
+  return Array.from(books.values()).sort((a, b) =>
+    Number(isDissertation(a.title)) - Number(isDissertation(b.title)) ||
+    a.title.localeCompare(b.title)
+  );
 }
 
 // Read every page so books and chapter counts are not limited to the first batch.

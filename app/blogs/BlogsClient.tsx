@@ -12,6 +12,8 @@ import { STORY_CATEGORY } from '@lib/blogCategories';
 import { useSearchParams } from 'next/navigation';
 import AutoLinkText from '@components/AutoLinkText/AutoLinkText';
 const pageSize = 5;
+const isDissertationTag = (tag: string) =>
+  ['dissertation', 'disseration'].includes(tag.toLowerCase());
 
 interface BlogsClientProps {
   mode: 'stories' | 'topics';
@@ -57,7 +59,11 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
     if (mode === 'stories') return [];
     if (!Array.isArray(allTags) || allTags.length === 0) return ['All'];
 
-    return ['All', ...allTags];
+    return [
+      'All',
+      ...allTags.filter((tag) => !isDissertationTag(tag)),
+      ...allTags.filter(isDissertationTag),
+    ];
   }, [allTags, mode]);
   
 
