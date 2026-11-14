@@ -30,6 +30,11 @@ const mediaArticles = [
     url: 'https://crossing.cw.com.tw/article/9355',
     date: '2018-01-26',
   },
+  {
+    title:'從殖民帝國到棕櫚油種植園：瀰漫在東南亞煙霾背後的全球資本與權力',
+    url:'https://www.thenewslens.com/article/270642',
+    date:'2026-10-20'
+  }
 ];
 
 export default function AboutPage() {
