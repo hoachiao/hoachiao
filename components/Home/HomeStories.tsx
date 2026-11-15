@@ -11,17 +11,17 @@ type BlogsResponse = {
   items: BlogsType[];
 };
 
-const HomeStories = () => {
+const HomeStories = ({ lang = 'zh' }: { lang?: 'zh' | 'en' }) => {
   const { data, error, isLoading } = useSWR<BlogsResponse>(
-    `/api/blogs?lang=zh&page=1&limit=3&tag=${STORY_CATEGORY}`,
+    `/api/blogs?lang=${lang}&page=1&limit=3&tag=${STORY_CATEGORY}`,
     async (url: string) => {
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error('文章載入失敗，請稍後再試。');
+        throw new Error(lang === 'en' ? 'Unable to load stories. Please try again later.' : '文章載入失敗，請稍後再試。');
       }
       const result = await response.json();
       if (result.error) {
-        throw new Error('文章載入失敗，請稍後再試。');
+        throw new Error(lang === 'en' ? 'Unable to load stories. Please try again later.' : '文章載入失敗，請稍後再試。');
       }
       return result as BlogsResponse;
     },
@@ -31,19 +31,19 @@ const HomeStories = () => {
   if (error) {
     return (
       <p className={styles.storyMessage} role='alert'>
-        {error instanceof Error ? error.message : '文章載入失敗，請稍後再試。'}
+        {error instanceof Error ? error.message : lang === 'en' ? 'Unable to load stories. Please try again later.' : '文章載入失敗，請稍後再試。'}
       </p>
     );
   }
 
   if (isLoading) {
-    return <p className={styles.storyMessage}>正在載入文章…</p>;
+    return <p className={styles.storyMessage}>{lang === 'en' ? 'Loading stories…' : '正在載入文章…'}</p>;
   }
 
   const stories = data?.items ?? [];
 
   if (stories.length === 0) {
-    return <p className={styles.storyMessage}>目前還沒有文章。</p>;
+    return <p className={styles.storyMessage}>{lang === 'en' ? 'No stories yet.' : '目前還沒有文章。'}</p>;
   }
 
   return (
@@ -53,7 +53,7 @@ const HomeStories = () => {
           (block) => block.type === 'image' && block.url
         );
         const description = story.summary;
-        const href = `/blogs/${story._id ?? story.id}?lang=zh`;
+        const href = `/blogs/${story._id ?? story.id}?lang=${lang}`;
         const visibleTags = story.tags?.filter(
           (tag) => tag.toLowerCase() !== 'humanity'
         );
@@ -63,7 +63,7 @@ const HomeStories = () => {
             <Link
               className={styles.storyImage}
               href={href}
-              aria-label={`閱讀：${story.title}`}
+              aria-label={lang === 'en' ? `Read: ${story.title}` : `閱讀：${story.title}`}
               style={
                 image?.url
                   ? { backgroundImage: `url("${image.url}")` }
@@ -72,7 +72,7 @@ const HomeStories = () => {
             />
             <div className={styles.storyContent}>
               <span className={styles.storyCategory}>
-                {visibleTags?.length ? visibleTags.slice(0, 2).join(' · ') : '故事筆記'}
+                {visibleTags?.length ? visibleTags.slice(0, 2).join(' · ') : lang === 'en' ? 'Stories' : '故事筆記'}
               </span>
               <h3 className={styles.storyTitle}>
                 <Link href={href}>{story.title}</Link>
@@ -84,7 +84,7 @@ const HomeStories = () => {
               )}
               {story.date && (
                 <time className={styles.storyDate} dateTime={story.date}>
-                  {new Date(story.date).toLocaleDateString('zh-TW')}
+                  {new Date(story.date).toLocaleDateString(lang === 'en' ? 'en-US' : 'zh-TW')}
                 </time>
               )}
             </div>

@@ -40,6 +40,36 @@
     font-size: 0.9rem;
   }
 
+  .articleMeta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.65rem 1rem;
+  }
+
+  &.englishArticle .articleMeta {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .translationNote {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid rgba(7, 59, 76, 0.14);
+    border-radius: 999px;
+    background: rgba(84, 191, 192, 0.1);
+    color: rgba(7, 59, 76, 0.75);
+    font-size: 0.72rem;
+    line-height: 1.4;
+  }
+
+  .translationNote span {
+    color: #a77a27;
+  }
+
   .content {
     width: 100%;
     margin: 0 auto 4rem;
@@ -137,6 +167,16 @@
 
     .dateTag {
       margin-top: 0;
+    }
+
+    .articleMeta {
+      justify-content: flex-start;
+    }
+
+    &.englishArticle .articleMeta {
+      width: 100%;
+      justify-content: space-between;
+      text-align: left;
     }
 
     .content p {

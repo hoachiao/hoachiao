@@ -119,10 +119,14 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
   
   return (
     <div>
-      <Navbar path={mode} />
-      <main className={`${styles.container} ${styles[mode]}`}>
+      <Navbar
+        path={mode}
+        lang={currentLang}
+        languageHref={`/${mode === 'stories' ? 'blogs' : 'topics'}?lang=${currentLang === 'zh' ? 'en' : 'zh'}`}
+      />
+      <main className={`${styles.container} ${styles[mode]}`} lang={currentLang === 'en' ? 'en' : 'zh-Hant'}>
         <div className={styles.headerRow}>
-          <h1>{mode === 'stories' ? '故事筆記' : '主題專欄'}</h1>
+          <h1>{mode === 'stories' ? (currentLang === 'en' ? 'Stories' : '故事筆記') : (currentLang === 'en' ? 'Topics' : '主題專欄')}</h1>
         </div>
         {!lang && (
           <div className='d-flex justify-content-center py-5'>
@@ -131,11 +135,11 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
             </div>
           </div>
         )}
-        {lang && error && <div role='alert'>文章載入失敗，請稍後再試。</div>}
+        {lang && error && <div role='alert'>{currentLang === 'en' ? 'Unable to load articles. Please try again later.' : '文章載入失敗，請稍後再試。'}</div>}
         {lang && isLoading && (
           <div className='d-flex justify-content-center py-5'>
             <div className='spinner-border text-primary' role='status'>
-              <span className='visually-hidden'>Loading...</span>
+              <span className='visually-hidden'>{currentLang === 'en' ? 'Loading...' : '正在載入文章…'}</span>
             </div>
           </div>
         )}
@@ -169,6 +173,7 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
                       title={blog.title}
                       description={renderDescription(blog)}
                       date={blog.date}
+                      lang={currentLang}
                       img={blog.imageUrl}
                       category={
                         mode === 'topics'
@@ -189,13 +194,13 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
                   );
                 })
               ) : (
-                <p>{mode === 'stories' ? '目前還沒有故事筆記。' : '目前還沒有主題文章。'}</p>
+                <p>{mode === 'stories' ? (currentLang === 'en' ? 'No stories yet.' : '目前還沒有故事筆記。') : (currentLang === 'en' ? 'No topic articles yet.' : '目前還沒有主題文章。')}</p>
               )}
             </div>
             {totalPages > 1 && (
               <nav
                 className='d-flex justify-content-center my-4'
-                aria-label='Blog pagination'
+                aria-label={currentLang === 'en' ? 'Blog pagination' : '文章分頁'}
               >
                 <ul className='pagination'>
                   <li className={`page-item ${page === 1 ? 'disabled' : ''}`}>
@@ -203,7 +208,7 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
                       type='button'
                       className='page-link border-0'
                       onClick={() => setPage((p) => Math.max(1, p - 1))}
-                      aria-label='Previous'
+                      aria-label={currentLang === 'en' ? 'Previous page' : '上一頁'}
                     >
                       <span aria-hidden='true'>&laquo;</span>
                     </button>
@@ -235,7 +240,7 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
                       type='button'
                       className='page-link border-0'
                       onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
-                      aria-label='Next'
+                      aria-label={currentLang === 'en' ? 'Next page' : '下一頁'}
                     >
                       <span aria-hidden='true'>&raquo;</span>
                     </button>
@@ -247,7 +252,7 @@ export default function BlogsClient({ mode }: BlogsClientProps) {
         )}
       </main>
       <div>
-        <Footer />
+        <Footer lang={currentLang} />
       </div>
     </div>
   );

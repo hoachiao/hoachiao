@@ -42,6 +42,15 @@
   white-space: nowrap;
 }
 
+.heroTitleEnglish {
+  max-width: 100%;
+  font-size: clamp(2.25rem, 4.1vw, 3.65rem);
+  letter-spacing: -0.045em;
+  line-height: 1.06;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
 .brushStroke {
   display: block;
   height: 0.35rem;
@@ -520,12 +529,20 @@
     font-size: clamp(3rem, 12vw, 4rem);
   }
 
+  .heroTitleEnglish {
+    max-width: 12ch;
+    font-size: clamp(2.4rem, 10.5vw, 3.4rem);
+    letter-spacing: -0.04em;
+  }
+
   .heroBrush {
     margin-bottom: 1.25rem;
   }
 
   .heroActions {
     margin-top: 1.25rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .photoCollage {
@@ -594,6 +611,10 @@
 @media (max-width: 380px) {
   .heroTitle {
     font-size: 2.8rem;
+  }
+
+  .heroTitleEnglish {
+    font-size: clamp(2.15rem, 10vw, 2.6rem);
   }
 
   .sectionTitle {

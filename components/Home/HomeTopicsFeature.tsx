@@ -14,18 +14,18 @@ type BlogsResponse = {
 const ROTATION_INTERVAL = 15_000;
 const MOBILE_QUERY = '(max-width: 760px)';
 
-const HomeTopicsFeature = () => {
+const HomeTopicsFeature = ({ lang = 'zh' }: { lang?: 'zh' | 'en' }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { data, error, isLoading } = useSWR<BlogsResponse>(
-    '/api/blogs?lang=zh&page=1&limit=100&scope=topics',
+    `/api/blogs?lang=${lang}&page=1&limit=100&scope=topics`,
     async (url: string) => {
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error('主題文章載入失敗，請稍後再試。');
+        throw new Error(lang === 'en' ? 'Unable to load topic articles. Please try again later.' : '主題文章載入失敗，請稍後再試。');
       }
       const result = await response.json();
       if (result.error) {
-        throw new Error('主題文章載入失敗，請稍後再試。');
+        throw new Error(lang === 'en' ? 'Unable to load topic articles. Please try again later.' : '主題文章載入失敗，請稍後再試。');
       }
       return result as BlogsResponse;
     },
@@ -40,8 +40,8 @@ const HomeTopicsFeature = () => {
   const hasCarousel = articles.length > 1;
   const articleKey = article ? String(article._id ?? article.id) : 'empty';
   const articleHref = article
-    ? `/blogs/${article._id ?? article.id}?lang=zh`
-    : '/topics';
+    ? `/blogs/${article._id ?? article.id}?lang=${lang}`
+    : `/topics?lang=${lang}`;
 
   useEffect(() => {
     setActiveIndex(0);
@@ -83,7 +83,7 @@ const HomeTopicsFeature = () => {
   };
 
   return (
-    <section className={styles.feature} aria-label='主題專欄'>
+    <section className={styles.feature} aria-label={lang === 'en' ? 'Topics' : '主題專欄'}>
       <div className={styles.featureVisual}>
         <div
           className={styles.featureImageSlide}
@@ -92,7 +92,7 @@ const HomeTopicsFeature = () => {
           <Link
             className={styles.featureImage}
             href={articleHref}
-            aria-label={article ? `閱讀：${article.title}` : '探索主題專欄'}
+            aria-label={article ? (lang === 'en' ? `Read: ${article.title}` : `閱讀：${article.title}`) : lang === 'en' ? 'Explore topics' : '探索主題專欄'}
             style={
               article?.imageUrl
                 ? { backgroundImage: `url("${article.imageUrl}")` }
@@ -105,14 +105,14 @@ const HomeTopicsFeature = () => {
             <button
               type='button'
               onClick={() => showArticle(-1)}
-              aria-label='上一篇主題專欄'
+              aria-label={lang === 'en' ? 'Previous topic' : '上一篇主題專欄'}
             >
               <span aria-hidden='true'>←</span>
             </button>
             <button
               type='button'
               onClick={() => showArticle(1)}
-              aria-label='下一篇主題專欄'
+              aria-label={lang === 'en' ? 'Next topic' : '下一篇主題專欄'}
             >
               <span aria-hidden='true'>→</span>
             </button>
@@ -121,9 +121,9 @@ const HomeTopicsFeature = () => {
       </div>
       <div className={styles.featureCopy}>
         <span className={styles.eyebrow}>READING &amp; RESEARCH</span>
-        <h2 className={styles.featureTitle}>主題專欄</h2>
+        <h2 className={styles.featureTitle}>{lang === 'en' ? 'Topics' : '主題專欄'}</h2>
         <p className={styles.featureDescription}>
-          依照閱讀與研究主題，探索不同的文化與歷史脈絡。
+          {lang === 'en' ? 'Explore cultural and historical contexts through reading and research.' : '依照閱讀與研究主題，探索不同的文化與歷史脈絡。'}
         </p>
         {article && (
           <div
@@ -134,7 +134,7 @@ const HomeTopicsFeature = () => {
             <span className={styles.featureArticleCategory}>
               {article.tags?.find(
                 (tag) => tag.toLowerCase() !== 'humanity'
-              ) ?? '主題專欄'}
+              ) ?? (lang === 'en' ? 'Topics' : '主題專欄')}
             </span>
             <h3 className={styles.featureArticleTitle}>{article.title}</h3>
             {article.summary && (
@@ -151,11 +151,11 @@ const HomeTopicsFeature = () => {
           <p className={styles.featureError} role='alert'>
             {error instanceof Error
               ? error.message
-              : '主題文章載入失敗，請稍後再試。'}
+              : lang === 'en' ? 'Unable to load topic articles. Please try again later.' : '主題文章載入失敗，請稍後再試。'}
           </p>
         )}
         <Link href={articleHref} className={styles.featureAction}>
-          {isLoading ? '載入最新文章…' : article ? '閱讀最新文章' : '探索主題'}
+          {isLoading ? (lang === 'en' ? 'Loading latest articles…' : '載入最新文章…') : article ? (lang === 'en' ? 'Read the latest story' : '閱讀最新文章') : (lang === 'en' ? 'Explore topics' : '探索主題')}
           <span aria-hidden='true'>→</span>
         </Link>
       </div>

@@ -10,6 +10,7 @@ interface CardProps {
   category?: string;
   variant?: 'default' | 'editorial' | 'stories';
   date?: string | null;
+  lang?: 'zh' | 'en';
   linkTarget?: '_blank' | '_self';
   secondaryLink?: string;
   secondaryLinkDescription?: string;
@@ -25,6 +26,7 @@ const Card: React.FC<CardProps> = ({
   linkDescription,
   size,
   date,
+  lang = 'zh',
   linkTarget = '_blank',
   secondaryLink,
   secondaryLinkDescription,
@@ -72,7 +74,7 @@ const Card: React.FC<CardProps> = ({
           <h3 className={styles.cardTitle}>{title}</h3>
           {date && (
             <time className={styles.dateText} dateTime={date}>
-              {new Date(date).toLocaleDateString('zh-TW')}
+              {new Date(date).toLocaleDateString(lang === 'en' ? 'en-US' : 'zh-TW')}
             </time>
           )}
         </div>

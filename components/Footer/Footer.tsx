@@ -2,18 +2,18 @@ import styles from './Footer.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Footer = () => {
+const Footer = ({ lang = 'zh' }: { lang?: 'zh' | 'en' }) => {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} lang={lang === 'en' ? 'en' : 'zh-Hant'}>
       <div className={styles.footerContent}>
-        <Link href='/' className={styles.brand}>
+        <Link href={`/?lang=${lang}`} className={styles.brand}>
           <Image
             src='/images/a-chiao-logo.png'
             alt=''
             width={40}
             height={40}
           />
-          <span>阿樵四界看</span>
+          <span>{lang === 'en' ? "A-Chiao's Fieldnotes" : '阿樵四界看'}</span>
         </Link>
         <nav className={styles.socialLinks} aria-label='社群連結'>
           <a

@@ -76,12 +76,12 @@ export default function BlogPage() {
         </div>
       </div>
     );
-  if (error) return <div>failed to load</div>;
+  if (error) return <div>{currentLang === 'en' ? 'Failed to load article.' : '文章載入失敗。'}</div>;
   if (isLoading)
     return (
       <div className='d-flex justify-content-center py-5'>
         <div className='spinner-border text-primary' role='status'>
-          <span className='visually-hidden'>Loading...</span>
+          <span className='visually-hidden'>{currentLang === 'en' ? 'Loading article…' : '正在載入文章…'}</span>
         </div>
       </div>
     );
@@ -103,14 +103,29 @@ export default function BlogPage() {
 
   return (
     <div>
-      <Navbar path={navbarPath} />
-      <div className={styles.container}>
+      <Navbar
+        path={navbarPath}
+        lang={currentLang}
+        languageHref={`/blogs/${id}?lang=${currentLang === 'zh' ? 'en' : 'zh'}`}
+      />
+      <div
+        className={`${styles.container} ${currentLang === 'en' ? styles.englishArticle : ''}`}
+        lang={currentLang === 'en' ? 'en' : 'zh-Hant'}
+      >
         <div className={styles.blogContainer}>
         {data && Object.keys(data).length > 0 && (
           <>
             <div className={styles.headerRow}>
               <h1>{blog.title}</h1>
-              {blog.date && <h6 className={styles.dateTag}>{blog.date}</h6>}
+              <div className={styles.articleMeta}>
+                {currentLang === 'en' && (
+                  <span className={styles.translationNote}>
+                    <span aria-hidden='true'>✦</span>
+                    This English version was translated with AI.
+                  </span>
+                )}
+                {blog.date && <h6 className={styles.dateTag}>{blog.date}</h6>}
+              </div>
             </div>
             <div className={styles.content}>
               {isCodeBlog ? (
@@ -124,7 +139,7 @@ export default function BlogPage() {
         </div>
       </div>
       <footer>
-        <Footer />
+        <Footer lang={currentLang} />
       </footer>
     </div>
   );
